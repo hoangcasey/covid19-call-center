@@ -1,9 +1,8 @@
 # Building an extension to an existing call center to handle Covid-19 calls
 
 # Phone number to call in: 1-628-268-2848
-
-MRN     email
-11111   hoangcasey@gmail.com
+If you calling in and picked the tested positive option, enter the following MRN#. 
+MRN    11111. 
 
 # Background - Why I choose this topic
 
