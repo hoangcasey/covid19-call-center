@@ -28,17 +28,7 @@ Scenario 1
 - Patient woke up with a fever. She is not feeling well. She has an appointment tomorrow. She will call our the clinic and to ask what she needs to do. When I get a call with this situation, a nurse will typically look into her chart and decide whether it is necessary for her to keep appoinment or it can wait till her after she get tested or her symptoms goes away. The ideal agent to answer this queue will be Nurse or Medical Assistant.
 
 Scenario 2
-
-- Patient is tested positive and call in to let us know. We will resheduled her appointments unless the doctor insists that she has to come in. I choose an email method because it does help reduce the line and some patients prefer using this form of commnication. The email will reach the provider of the actual appoinment.
-
-# Programming:
-
-## node_modules
-
-1.  git hub is not loading node_modules folder. The package.json in repository will have all the npm packages needed for this application run. Use command npm install "NPM module" --save
-
-## Variables -- .yml and .env files
-
+git
 1. REGION=us-east-1 -- Setup region where this application will be running from
 2. FROM_EMAIL=chinhoang@gmail.com -- email address required when using SES (getProviderEmail lambda function)
 3. CALL_API_FUNCTION=covid-19-call-center-dev-callapi -- this variable is when getcoviddata invoke lambda function to get the data from the public API
@@ -77,7 +67,7 @@ Scenario 2
 
 ### Incoming call - stage-1-entry-point
 
-![flow-1](flow-images/stage-1-entry-point.png)
+![flow-5](flow-images/stage-1-entry-point.png)
 
 1.  Caller will be prompt to press 1 if she/he has covid related concern or stay on the line
 2.  If caller did not pick option 1, call will be tranfer to a regular call center queue
@@ -87,7 +77,7 @@ Scenario 2
 
 ### Get Covid Data for State
 
-![flow-2](flow-images/stage-2-getCovidDataByState.png)
+![flow-6](flow-images/stage-2-getCovidDataByState.png)
 
 1. In this queue, caller will be prompt to enter home Zipcode.
 2. The system will then invoke the getcovidData function using the zipcode. It will then pass the zipcode into callAPI function where it get the data from the API.
@@ -95,7 +85,7 @@ Scenario 2
 
 ### Established Patient Queue
 
-![flow-3](flow-images/stage-2-establish-patient-queue.png)
+![flow-7](flow-images/stage-2-establish-patient-queue.png)
 
 1. When caller is transfer in this queue, caller will be prompt to either
    a. say the symptoms they are experiencing (fever, shortness of breath, running nose, coughing, or 1), and it will transfer to stage-3-enter-showing-symptoms-queue
@@ -103,7 +93,7 @@ Scenario 2
 
 ### Showing Symptoms Queue
 
-![flow-4](flow-images/stage-3-enter-showing-symptoms-queue.png)
+![flow-8](flow-images/stage-3-enter-showing-symptoms-queue.png)
 
 1. When caller is showing symptoms, the system will prompt caller the wait time in queue is either less or more than 3 mins.
 2. Caller can pick option one to enter queue where an agent will answer the call
@@ -117,7 +107,7 @@ Scenario 2
 
 ### Tested Positive Queue
 
-![flow-5](flow-images/stage-3-tested-positive-queue.png)
+![flow-9](flow-images/stage-3-tested-positive-queue.png)
 
 1. When caller pick the tested positive option, it will go to this stage-3-Tested-positive-Queue where caller will be prompt to enter their 5 digits medical record number.
 2. It will be then invoke "getProviderEmail" lambda function to send an email to the provider using AWS SES. .
