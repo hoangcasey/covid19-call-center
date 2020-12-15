@@ -21,7 +21,7 @@ Below is the flow of the call-center
 
 ![flow-3](flow-chart/page3.png)
 
-![flow-4](flow-chart/page1.png)
+![flow-4](flow-chart/page4.png)
 
 Scenario 1
 
