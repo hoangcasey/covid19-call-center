@@ -1,0 +1,71 @@
+service: covid-19-call-center
+frameworkVersion: '2'
+useDotenv: true # If set to 'true', environment variables will be automatically loaded from .env files
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  profile: serverlessUser
+  region: ${env:REGION}
+
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamoDB:*
+        - ses:*
+        - lambda:*
+        - sns:*
+      Resource: '*'
+
+plugins:
+  - serverless-webpack
+  - serverless-dotenv-plugin
+
+package:
+  individually: true
+
+functions:
+  insertcallbacknumber:
+    handler: insertCallBackNumber.handler
+    description: function to callback phone number into table
+
+  getprovideremail:
+    handler: getProviderEmail.handler
+    description: function to get provider from appt table and invoke sendEmail Function
+
+  getcoviddata:
+    handler: getCovidData.handler
+    description: function will take in the zipcode passed in from flow, and then will call pass the state to callAPI.js to get data back.
+
+  callapi:
+    handler: callAPI.handler
+    description: function will get data back from an public api
+
+  sendsns:
+    handler: sendSNS.handler
+    description: function will get data back from a
+
+resources:
+  Resources:
+    DynamoDbTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: callback_number_list
+        AttributeDefinitions:
+          - AttributeName: 'callbacknum'
+            AttributeType: 'S'
+        KeySchema:
+          - AttributeName: 'callbacknum'
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+    DynamoDbTable2:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: provider_email
+        AttributeDefinitions:
+          - AttributeName: 'mrn'
+            AttributeType: 'S'
+        KeySchema:
+          - AttributeName: 'mrn'
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST

@@ -1,0 +1,21 @@
+{
+  "name": "obgyncallcenter",
+  "version": "1.0.0",
+  "description": "This is the call center app for OBGYN clinic during Covid-19 pandemic",
+  "main": "handler.js",
+  "scripts": {
+    "test": "testing"
+  },
+  "author": "Casey H",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.809.0",
+    "dotenv": "^8.2.0",
+    "env-cmd": "^10.1.0",
+    "request": "^2.88.2",
+    "require": "^2.4.20",
+    "serverless-dotenv-plugin": "^3.1.0",
+    "serverless-webpack": "^5.3.5",
+    "webpack": "^5.10.1"
+  }
+}
