@@ -2,8 +2,8 @@
 
 # Phone number to call in: 1-628-268-2848
 
-MRN email
-11111 hoangcasey@gmail.com
+MRN     email
+11111   hoangcasey@gmail.com
 
 # Background - Why I choose this topic
 
@@ -28,7 +28,7 @@ Scenario 1
 - Patient woke up with a fever. She is not feeling well. She has an appointment tomorrow. She will call our the clinic and to ask what she needs to do. When I get a call with this situation, a nurse will typically look into her chart and decide whether it is necessary for her to keep appoinment or it can wait till her after she get tested or her symptoms goes away. The ideal agent to answer this queue will be Nurse or Medical Assistant.
 
 Scenario 2
-git
+
 1. REGION=us-east-1 -- Setup region where this application will be running from
 2. FROM_EMAIL=chinhoang@gmail.com -- email address required when using SES (getProviderEmail lambda function)
 3. CALL_API_FUNCTION=covid-19-call-center-dev-callapi -- this variable is when getcoviddata invoke lambda function to get the data from the public API
