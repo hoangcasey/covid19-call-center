@@ -2,6 +2,9 @@
 
 # Phone number to call in: 1-628-268-2848
 
+MRN email
+11111 hoangcasey@gmail.com
+
 # Background - Why I choose this topic
 
 When I got this coding assignment, all I can think of the call center at my work place. Currently, when patients call our OBGYN clinic, for the first minute the prompt will be about Covid 19. At the end of the announcement it will ask patient to write down the Michigan Hospital covid-19 hotline number and to give this a call. I think a hospital this size should be able to tranfer patients to the hotline.
@@ -9,7 +12,16 @@ Most patients will wait in queue. I like for patient to have an option to go cov
 The covid-19 protocols is always changing. I usually spend a lot of time asking doctors or nurses, whether a patient should cancel, reschedule their appointments, while putting patient on hold. This process takes a long time.
 I designed a BEGINNING version of this flow where patients would to not be on hold for 20 minutes to reach the call center and another 20 minutes before the clinic can make a decision.
 This had been very exciting challenge for me. I learned a lot and know very well there are so much to learn about connect, aws, programming in general. To be able to use my job experience when designing this system make it real and interesting for me.
-My focus on this project is when a call center that can handle a health pandemic like covid 19. This are some scenarios that I used while developing this system.
+My focus on this project is when a call center that can handle a health pandemic like covid 19. This are some test scenarios that I used while developing this system.
+Below is the flow of the call-center
+
+![flow-1](flow-chart/page1.png)
+
+![flow-2](flow-chart/page2.png)
+
+![flow-3](flow-chart/page3.png)
+
+![flow-4](flow-chart/page1.png)
 
 Scenario 1
 
@@ -19,7 +31,11 @@ Scenario 2
 
 - Patient is tested positive and call in to let us know. We will resheduled her appointments unless the doctor insists that she has to come in. I choose an email method because it does help reduce the line and some patients prefer using this form of commnication. The email will reach the provider of the actual appoinment.
 
-# Programming Aspects:
+# Programming:
+
+## node_modules
+
+1.  git hub is not loading node_modules folder. The package.json in repository will have all the npm packages needed for this application run. Use command npm install "NPM module" --save
 
 ## Variables -- .yml and .env files
 
@@ -67,11 +83,11 @@ Scenario 2
 2.  If caller did not pick option 1, call will be tranfer to a regular call center queue
 3.  If caller pick the covid option, caller will be asked whether he/she an established patient for the Michigan health system.
 4.  If caller did not press 1, she / he will be prompt to call their provider and call will terminate
-5.  When the caller press 1, it will tranfers to stage-2-get-CovidDataByState queue
+5.  When the caller press 1, call will tranfers to stage-2-get-CovidDataByState queue
 
 ### Get Covid Data for State
 
-![flow-3](flow-images/stage-2-getCovidDataBystate.png)
+![flow-2](flow-images/stage-2-getCovidDataByState.png)
 
 1. In this queue, caller will be prompt to enter home Zipcode.
 2. The system will then invoke the getcovidData function using the zipcode. It will then pass the zipcode into callAPI function where it get the data from the API.
@@ -79,11 +95,11 @@ Scenario 2
 
 ### Established Patient Queue
 
-![flow-4](flow-images/stage-2-establish-patient-queue.png)
+![flow-3](flow-images/stage-2-establish-patient-queue.png)
 
 1. When caller is transfer in this queue, caller will be prompt to either
    a. say the symptoms they are experiencing (fever, shortness of breath, running nose, coughing, or 1), and it will transfer to stage-3-enter-showing-symptoms-queue
-   b. to say tested positive if tested positive or 2 and , and call will be tranfer to stage-3-enter-tested-positive-queue
+   b. say tested positive if tested positive or 2 and , and call will be tranfer to stage-3-enter-tested-positive-queue
 
 ### Showing Symptoms Queue
 
@@ -108,17 +124,17 @@ Scenario 2
 3. Caller will be prompt that the provider will be contacting shortly. Call will terminate
 4. If caller do not know the MRN, call be tranfer to an agent.
 
-## My ideal finished product would be with these functions (giving more time)
+## My ideal finished product would be with these functions (with more time)
 
 - lambda function to read the phone number caller use to call in.
-- to find an API that will get the State using the zipcode provided.
+- to find an API that will get the State using the zipcode provided.(not hardcoding it)
+- A work flow to read the callbacknum table and send a message to the supervisor that the following patients are still waiting for callback anad allowing the manager to set max hours patient should be waiting.
 - Send a reminder to agent/nurse when same pt called again
-- When a pt get a call back, that number will be delete from the list.
-- A Confirmation to the clinic manage that the provider read the email.
+- A Confirmation to the clinic manager that the provider read the email.
 - I would love to add Chinese speaking queue by using Polly, SSML. It will very exciting if I can make this happen.
 -
 
 ## Things I learned the last few days:
 
-This is my first coding assigment since 2004. I rediscovered my love in programming and designing system. Thank you for giving me this great apportunity.
+This is my first coding assigment since 2004. I rediscovered my love in programming and designing system. Thank you for giving me this great opportunity.
 I still find coding very exciting, challenging and frustrating at times. This few days reminded me how I was. Waking up thinking about the code and going to bed thinking about how to make the program better. There are a lot more I like to add to this project to make it more functional and efficient. With my full time job and 3 kids doing online school at home, I tried as hard as I can.
